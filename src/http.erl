@@ -16,9 +16,7 @@
 	 parse_json/1
 ]).
 
--type error() :: {error, any()}.
--type httpc_response() :: {httpc:status_line(), httpc:headers(), binary()}.
--type http_error() :: {error, {http, httpc_response()}}.
+-include("webtools.hrl").
 
 fetch_json(Url) ->
     error_m:do(
