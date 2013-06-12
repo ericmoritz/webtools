@@ -1,5 +1,5 @@
 PLT_APPS ?=
-SRC ?= src
+SRC ?= src deps/*/src
 EBIN ?= ebin deps/*/ebin
 DIALYZER_OPTS ?= \
 	-Werror_handling\
