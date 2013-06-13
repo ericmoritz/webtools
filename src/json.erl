@@ -38,7 +38,7 @@ get(Key, {Props}) ->
     case proplists:get_value(Key, Props) of
 	undefined ->
 	    {error, notfound};
-	V ->
+	{ok, V} ->
 	    {ok, V}
     end;
 get(Key, Val) ->
@@ -94,6 +94,10 @@ get_obj_test() ->
 
 get_obj_notfound_test() ->
     {error, notfound} = get(<<"name">>, {[{<<"greeting">>, <<"hi">>}]}).
+
+get_default_test() ->
+    {ok, <<"hi">>} = get(<<"greeting">>, {[{<<"greeting">>, <<"hi">>}]}, <<"bye">>),
+    {ok, <<"bye">>} = get(<<"greeting">>, {[]}, <<"bye">>).
 
 get_type_error_test() ->
     {error, {type_error, <<"test">>, <<"string">>}} = get(<<"test">>, <<"string">>),
