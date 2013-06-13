@@ -38,7 +38,7 @@ get(Key, {Props}) ->
     case proplists:get_value(Key, Props) of
 	undefined ->
 	    {error, notfound};
-	{ok, V} ->
+	V ->
 	    {ok, V}
     end;
 get(Key, Val) ->
@@ -55,7 +55,7 @@ get(Key, JSON, Default) ->
     case get(Key, JSON) of
 	{error, notfound} ->
 	    {ok, Default};
-	V ->
+	{ok, V} ->
 	    {ok, V}
     end.
     
